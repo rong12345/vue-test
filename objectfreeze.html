@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ change }}</p>
+    <button v-on:click="change='hi'">能否更改</button>
+    <!-- 这里的 `foo` 不会更新！ -->
+  </div>
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script type="text/javascript">
+    var  test={change:'hello'}
+    //阻止修改现有属性，响应系统无法再追踪变化
+    Object.freeze(test)
+    var vm = new Vue({
+      el:'#app',
+      data:test
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="app">
+    <button @click="counter += 1">add 1</button>
+    <p>the button above has been clicked {{ counter }} times.</p>
+  </div>
+
+  <div class="app2">
+    <button @click="greet">Greet</button>
+  </div>
+
+  <div class="app3">
+    <button @click="say('hi')">say hi</button>
+    <button @click="say('hello')">say hello</button>
+    <button @click="warn('Form cannot be submitted yet.', $event)">
+      Submit
+    </button>
+  </div>
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el:'.app',
+      data:{
+        counter: 0
+      }
+    })
+    var app2 = new Vue({
+      el:'.app2',
+      data:{
+        name:'vue.js'
+      },
+      methods:{
+        greet:function(event){
+           // `this` 在方法里指向当前 Vue 实例
+          alert('hello '+this.name)
+          // `event` 是原生 DOM 事件
+          if (event) {
+           alert(event.target.tagName)
+         }
+        }
+      }
+    })
+    // 也可以用 JavaScript 直接调用方法
+    // app2.greet() // => 'Hello Vue.js!'
+
+    var app3 = new Vue({
+      el:'.app3',
+      methods:{
+        say:function(msg){
+          alert(msg)
+        },
+        warn: function (message, event) {
+          // 现在我们可以访问原生事件对象
+          if (event) event.preventDefault()
+          alert(message)
+        }
+      }
+    })
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 响应式 -->
+  <div id="app">
+    <!-- 文本插值 -->
+    <p>{{ message }}</p>
+  </div>
+  <div id="app2">
+    <!-- 绑定元素特性 -->
+    <span v-bind:title='message'>
+      悬停几秒试一试
+    </span>
+  </div>
+  <div id="app3">
+    <!-- 控制切换元素是否显示 true显示 false消失-->
+    <p v-if='seen'>能看到我</p>
+  </div>
+  <div id="app4">
+    <ul>
+      <!-- 绑定数组数据渲染项目列表 -->
+      <li v-for='item in items'>
+        {{item.msg}}
+      </li>
+    </ul>
+  </div>
+  <div class="app5">
+    <p>{{ message }}</p>
+    <!-- v-on指令添加事件监听 -->
+    <button v-on:click='reverseMessage'>逆转消息</button>
+  </div>
+  <div class="app6">
+    <!-- 双向绑定 -->
+    <p>{{msg}}</p>
+    <input type="text" v-model="msg">
+  </div>
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script>
+    var app = new Vue({
+      el:'#app',
+      data:{
+        message:'helloworld'
+      }
+    })
+    var app2 = new Vue({
+      el:'#app2',
+      data:{
+        //toLocaleString()方法可根据本地时间把Date对象转换为字符串，并返回结果。
+        message:'页面加载于' + new Date().toLocaleString()
+      }
+    })
+    var app3 = new Vue({
+      el:'#app3',
+      data:{
+        seen:true
+      }
+    })
+    var app4 = new Vue({
+      el:'#app4',
+      data:{
+        items:[
+          {msg:'first'},
+          {msg:'second'},
+          {msg:'third'}
+        ]
+      }
+    })
+    var app5 = new Vue({
+      el:'.app5',
+      data:{
+        message:'hello vue'
+      },
+      methods:{
+        reverseMessage:function(){
+          this.message=this.message.split('').reverse().join('')
+        }
+      }
+    })
+    var app6 = new Vue({
+      el:'.app6',
+      data:{
+        msg:'我们俩内容一样'
+      }
+    })
+  </script>
+</body>
+</html>
