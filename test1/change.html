@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{ site }}</p>   <!-- {{}}用于输出对象属性和函数返回值 -->
+		<p>{{ message }}</p>
+		<p>{{ alexa }}</p>
+	</div>
+
+	<script>
+		var data = {site:'name',message:'hello',alexa:11111}
+		var vm = new Vue({
+			el:'#app',
+			data:data
+		})
+
+		document.write(vm.a === data.a) //true
+		document.write('<br>')
+
+		// 设置属性也会影响到原始数据
+		vm.site = 'myname'
+		document.write(data.site + '<br>') //myname
+
+		// ……反之亦然
+	    data.alexa = 1234
+	    document.write(vm.alexa) // 1234
+
+	    //除了数据属性，Vue 实例还提供了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+	    document.write(vm.$el === document.getElementById('app')) // true
+	</script>
+</body>
+</html>

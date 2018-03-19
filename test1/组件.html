@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	<!-- 组件在注册之后，便可以作为自定义元素<my-component></my-component>在一个实例的模板中使用,注意确保在初始化根实例之前注册组件： -->
+	<!-- 全局注册 -->
+	<div id="example">
+		<my-component></my-component>
+	</div>
+	
+	<!-- 局部注册 -->
+	<div id="examples">
+		<my-components></my-components>
+	</div>
+
+	<script>
+		// 全局注册
+		Vue.component('my-component',{
+			template:'<div>a custom component</div>'
+		})
+		//创建根实例
+		new Vue({
+			el:'#example'
+		})
+
+		//局部注册
+		var Child={
+			template:'<div>局部注册</div>'
+		}
+		new Vue({
+			el:'#examples',
+			components:{
+				'my-components':Child
+			}
+		})
+	</script>
+</body>
+</html>

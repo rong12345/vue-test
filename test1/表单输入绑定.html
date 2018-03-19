@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.min.js"></script>
+</head>
+<body>
+	<!-- 文本绑定 -->
+	<div id="a">
+		<input type="text" v-model="binda">
+		<p>msg:{{ binda }}</p>
+	</div>
+
+	<!-- 复选框绑定 -->
+	<div id="b">
+		<input type="checkbox" value="apple" v-model="bindb">
+		<label for="man">apple</label>
+		<input type="checkbox" value="banana" v-model="bindb">
+		<label for="woman">banana</label>
+		<span>check fruit:{{bindb}}</span>
+	</div>
+
+	<!-- 单选框绑定 -->
+	<div id="c">
+		<input type="radio" value="man" v-model="bindc">
+		<label for="man">man</label>
+		<input type="radio" value="woman" v-model="bindc">
+		<label for="woman">woman</label>
+		<span>check sex:{{bindc}}</span>
+	</div>
+	
+	<!-- 单个复选框，绑定到布尔值 -->
+	<div id="d">
+		<input type="checkbox"   v-model="bindd">
+		<label for="checkbox">{{bindd}}</label>
+	</div>
+
+	<!-- 选择框绑定 -->
+	<div id="e">
+		<select  v-model="selected" multiple>
+			<!-- <option value="">请选择</option> -->
+			<option>v</option>
+			<option>u</option>
+			<option>e</option>
+		</select>
+		<span>selected:{{ selected }}</span>
+	</div>
+
+	<!-- v-for渲染动态选项 -->
+	<div id="f">
+		<select  v-model="selected"  >
+			<option v-for="item in items"  v-bind:value="item.value">
+				{{item.msg}}
+			</option>
+		</select>
+		<span>selected:{{ selected }}</span>
+	</div>
+
+	<script>
+		var vma = new Vue({
+			el:'#a',
+			data:{
+				binda:''
+			}
+		})
+		var vmb = new Vue({
+			el:'#b',
+			data:{
+				bindb:[ ]
+			}
+		})
+		var vmc = new Vue({
+			el:'#c',
+			data:{
+				bindc:' '
+			}
+		})
+		var vmc = new Vue({
+			el:'#d',
+			data:{
+				bindd:' true '
+			}
+		})
+		var vme = new Vue({
+			el:'#e',
+			data:{
+				selected:""
+			}
+		})
+		var vmf = new Vue({
+			el:'#f',
+			data:{
+				selected:'a',
+				items:[
+					{msg:'one',value:'a'},
+					{msg:'two',value:'b'},
+					{msg:'three',value:'c'},
+				]
+			}
+		})
+	</script>
+</body>
+</html>

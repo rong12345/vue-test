@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	<div id="app">
+		{{5+5}} <br>
+		{{ok ? 'yes' : 'no'}} <br>
+		{{message.split('').reverse().join('')}}
+		<!-- split函数是将一个字符串分割成字符串数组。join函数是将数组中的所有元素放入字符串中.reverse()函数：是将数组中的元素颠倒过来 -->
+		<!-- aaallll -->
+		<div v-bind:id="'list-' + id">name</div>
+	</div>
+
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				ok:false,
+				message:'llllaaa',
+				id:1
+			}
+		})
+	</script>
+</body>
+</html>

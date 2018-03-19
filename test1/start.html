@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{ site }}</p>   <!-- {{}}用于输出对象属性和函数返回值 -->
+		<p>{{ message }}</p> 
+		
+		<!-- 使用 v-html 指令用于输出 html 代码 -->
+	    <p v-html="message"></p>
+
+		<p>{{ details() }}</p>
+	</div>
+
+
+	<script>
+		new Vue({
+			el: '#app', //dom元素id
+			data:{        //date定义属性
+				site: 'name',
+				message: 'hello vue.js!'
+			},
+			methods: {     //methods定义函数,可用return返回函数值
+				details: function() {
+					return this.site +" "+ 'is jiangrong';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

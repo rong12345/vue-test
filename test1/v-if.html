@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	指令是带有 v- 前缀的特殊属性。指令用于在表达式的值改变时，将某些行为应用到 DOM 上。
+	<div id="app">
+		<p v-if="yes">yes</p>
+		<div v-if="no">
+			<h1>hello</h1>
+			<p>fff</p>
+			<p>nnn</p>
+		</div>
+	</div>
+
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				yes:true,
+				no:false
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	双向绑定
+	<div id="app">
+		<p>message:{{ message }}</p>
+		<input v-model="message"  placeholder="请输入信息内容"/>
+	</div>
+	<script>
+		new Vue({
+		  el: '#app',
+		  data: {
+		    message: ' '
+		  }
+		})
+	</script>
+</body>
+</html>

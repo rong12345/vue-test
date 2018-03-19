@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.min.js'></script>
+</head>
+<body>
+	<!-- 父组件通过prop给子组件下发数据，子组件通过事件给父组件发送消息 -->
+	prop
+	<div id="app">
+		<child msg="hello!"></child>
+	</div>
+	<script>
+		Vue.component('child',{
+			//声明prop
+			props:['msg'],
+			// 就像 data 一样，prop 也可以在模板中使用
+  			// 同样也可以在 vm 实例中通过 this.message 来使用
+  			template:'<h1>{{msg}}</h1>'
+		})
+		new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>
